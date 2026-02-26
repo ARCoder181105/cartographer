@@ -1,5 +1,3 @@
-# Create root .gitignore
-cat > .gitignore << 'EOF'
 # C++ build output
 parser/build/
 
