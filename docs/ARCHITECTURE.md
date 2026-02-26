@@ -10,10 +10,16 @@ This document is a companion to MASTERPLAN.md, focused on the exact file structu
 cartographer/
 │
 ├── Makefile                    # Root build: `make all`, `make test`, `make clean`
-├── README.md
-├── ROADMAP.md
-├── MASTERPLAN.md
-├── ARCHITECTURE.md
+├── README.md                   # Project overview (root level, rendered by GitHub)
+│
+├── docs/                       # All project documentation
+│   ├── ROADMAP.md              # Phased build plan with milestones
+│   ├── MASTERPLAN.md           # Architecture decisions + data flow
+│   ├── ARCHITECTURE.md         # This file
+│   ├── ALGORITHMS.md           # Algorithm pseudocode + analysis
+│   ├── BINARY_FORMAT.md        # .cgraph format spec (added in Phase 3)
+│   ├── PARSER_GRAMMAR.md       # Grammar reference (added in Phase 1)
+│   └── API.md                  # HTTP API reference (added in Phase 6)
 │
 ├── parser/                     # C++ Parser Engine
 │   ├── CMakeLists.txt
@@ -72,55 +78,46 @@ cartographer/
 │   └── watcher/
 │       └── watcher.go          # fsnotify watcher + debouncer
 │
-├── frontend/                   # TypeScript + WebGL Frontend
-│   ├── package.json
-│   ├── tsconfig.json
-│   ├── vite.config.ts
-│   ├── index.html
-│   └── src/
-│       ├── main.ts
-│       ├── api/
-│       │   ├── client.ts       # Typed HTTP client
-│       │   ├── types.ts        # API response types (mirrors Go response_types.go)
-│       │   └── websocket.ts    # WebSocket connection + message handling
-│       ├── graph/
-│       │   ├── model.ts        # GraphModel, NodeModel, EdgeModel
-│       │   └── diff.ts         # Snapshot diffing for morph animation
-│       ├── renderer/
-│       │   ├── context.ts      # WebGL2 context + extension setup
-│       │   ├── shaders.ts      # GLSL source strings + shader compilation
-│       │   ├── program.ts      # ShaderProgram wrapper
-│       │   ├── nodeRenderer.ts # Instanced circle rendering
-│       │   ├── edgeRenderer.ts # Line quad rendering
-│       │   ├── districtRenderer.ts # Convex hull polygon rendering
-│       │   └── glowRenderer.ts # Additive blend glow pass
-│       ├── camera/
-│       │   ├── camera.ts       # Camera state (pan, zoom, projection matrix)
-│       │   └── flight.ts       # Animated camera target system
-│       ├── interaction/
-│       │   ├── picker.ts       # World-space node hit testing
-│       │   ├── pan.ts          # Mouse drag → camera pan
-│       │   └── zoom.ts         # Scroll wheel → camera zoom
-│       ├── ui/
-│       │   ├── search.ts       # Search bar + results dropdown
-│       │   ├── details.ts      # Node details side panel
-│       │   ├── slider.ts       # Git history time slider
-│       │   ├── minimap.ts      # Minimap overlay (separate WebGL canvas)
-│       │   └── legend.ts       # Color/size encoding legend
-│       └── utils/
-│           ├── convexHull.ts   # Graham scan
-│           ├── kdtree.ts       # 2D KD-tree (client-side hit testing)
-│           ├── easing.ts       # Animation curves
-│           └── math.ts         # Vec2, Mat3 mini math library
-│
-├── shared/
-│   └── format/
-│       └── BINARY_FORMAT.md   # Canonical .cgraph format spec
-│
-└── docs/
-    ├── ALGORITHMS.md           # Algorithm pseudocode + analysis
-    ├── PARSER_GRAMMAR.md       # Informal grammar reference for Go + TS parsing
-    └── API.md                  # Full HTTP API reference
+└── frontend/                   # TypeScript + WebGL Frontend
+    ├── package.json
+    ├── tsconfig.json
+    ├── vite.config.ts
+    ├── index.html
+    └── src/
+        ├── main.ts
+        ├── api/
+        │   ├── client.ts       # Typed HTTP client
+        │   ├── types.ts        # API response types (mirrors Go response_types.go)
+        │   └── websocket.ts    # WebSocket connection + message handling
+        ├── graph/
+        │   ├── model.ts        # GraphModel, NodeModel, EdgeModel
+        │   └── diff.ts         # Snapshot diffing for morph animation
+        ├── renderer/
+        │   ├── context.ts      # WebGL2 context + extension setup
+        │   ├── shaders.ts      # GLSL source strings + shader compilation
+        │   ├── program.ts      # ShaderProgram wrapper
+        │   ├── nodeRenderer.ts # Instanced circle rendering
+        │   ├── edgeRenderer.ts # Line quad rendering
+        │   ├── districtRenderer.ts # Convex hull polygon rendering
+        │   └── glowRenderer.ts # Additive blend glow pass
+        ├── camera/
+        │   ├── camera.ts       # Camera state (pan, zoom, projection matrix)
+        │   └── flight.ts       # Animated camera target system
+        ├── interaction/
+        │   ├── picker.ts       # World-space node hit testing
+        │   ├── pan.ts          # Mouse drag → camera pan
+        │   └── zoom.ts         # Scroll wheel → camera zoom
+        ├── ui/
+        │   ├── search.ts       # Search bar + results dropdown
+        │   ├── details.ts      # Node details side panel
+        │   ├── slider.ts       # Git history time slider
+        │   ├── minimap.ts      # Minimap overlay (separate WebGL canvas)
+        │   └── legend.ts       # Color/size encoding legend
+        └── utils/
+            ├── convexHull.ts   # Graham scan
+            ├── kdtree.ts       # 2D KD-tree (client-side hit testing)
+            ├── easing.ts       # Animation curves
+            └── math.ts         # Vec2, Mat3 mini math library
 ```
 
 ---

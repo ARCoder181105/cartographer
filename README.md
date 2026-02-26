@@ -96,7 +96,7 @@ cd frontend && npm install && npm run dev
 
 ## Roadmap
 
-See [ROADMAP.md](./ROADMAP.md) for the full phased build plan.
+See [ROADMAP.md](./docs/ROADMAP.md) for the full phased build plan.
 
 ---
 
@@ -104,31 +104,40 @@ See [ROADMAP.md](./ROADMAP.md) for the full phased build plan.
 
 ```
 cartographer/
-├── parser/          # C++ recursive descent parser
-│   ├── src/
-│   │   ├── lexer/
-│   │   ├── parser/
-│   │   ├── ast/
-│   │   └── emitter/
-│   └── Makefile
-├── engine/          # Go layout + query server
-│   ├── layout/      # Fruchterman-Reingold
-│   ├── graph/       # Graph data structures
-│   ├── query/       # Spatial + path queries
-│   ├── git/         # Git log parser
-│   └── server/      # HTTP API
-├── frontend/        # TypeScript + WebGL
-│   ├── renderer/    # WebGL node/edge rendering
-│   ├── camera/      # Pan/zoom controls
-│   ├── ui/          # Search, panels, time-slider
-│   └── api/         # Go server client
-├── shared/
-│   └── format/      # Binary graph format spec (.cgraph)
-└── docs/
-    ├── ROADMAP.md
-    ├── MASTERPLAN.md
-    ├── ARCHITECTURE.md
-    └── ALGORITHMS.md
+├── README.md
+├── Makefile
+├── docs/
+│   ├── ROADMAP.md
+│   ├── MASTERPLAN.md
+│   ├── ARCHITECTURE.md
+│   ├── ALGORITHMS.md
+│   ├── BINARY_FORMAT.md      # added in Phase 3
+│   ├── PARSER_GRAMMAR.md     # added in Phase 1
+│   └── API.md                # added in Phase 6
+├── parser/                   # C++ recursive descent parser
+│   ├── CMakeLists.txt
+│   └── src/
+│       ├── lexer/
+│       ├── parser/
+│       ├── graph/
+│       ├── emitter/
+│       └── walker/
+├── engine/                   # Go layout + query server
+│   ├── graph/
+│   ├── layout/
+│   ├── query/
+│   ├── git/
+│   ├── server/
+│   └── watcher/
+└── frontend/                 # TypeScript + WebGL
+    └── src/
+        ├── api/
+        ├── graph/
+        ├── renderer/
+        ├── camera/
+        ├── interaction/
+        ├── ui/
+        └── utils/
 ```
 
 ---
