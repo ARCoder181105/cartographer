@@ -125,8 +125,9 @@ cartographer/
 ├── shared/
 │   └── format/      # Binary graph format spec (.cgraph)
 └── docs/
+    ├── ROADMAP.md
+    ├── MASTERPLAN.md
     ├── ARCHITECTURE.md
-    ├── BINARY_FORMAT.md
     └── ALGORITHMS.md
 ```
 
