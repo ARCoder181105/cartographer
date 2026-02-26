@@ -1,0 +1,21 @@
+# Create root .gitignore
+cat > .gitignore << 'EOF'
+# C++ build output
+parser/build/
+
+# Go build output
+engine/bin/
+
+# Frontend build output
+frontend/dist/
+frontend/node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+EOF
